@@ -50,8 +50,10 @@ distro==1.4.0
 distro-info==0.23+ubuntu1.1
 django==4.2.25
 django-admin==2.0.2
+django-autoslug==1.9.9
 django-excel-response2==3.0.6
 django-six==1.0.5
+django-tinymce==4.1.0
 dnspython==2.6.1
 duplicity==0.8.12.0
 entrypoints==0.3
@@ -164,12 +166,14 @@ smmap==5.0.0
 soupsieve==2.5
 sqlparse==0.5.3
 stevedore==3.5.0
+svgwrite==1.4.3
 systemd-python==234
 tenacity==8.0.1
 textparser==0.24.0
 TimeConvert==3.0.13
 toml==0.10.2
 tomli==2.0.1
+Tree==0.2.4
 typing-extensions==4.1.1
 tzdata==2024.1
 tzlocal==5.2
