@@ -53,7 +53,6 @@ django-admin==2.0.2
 django-excel-response2==3.0.6
 django-six==1.0.5
 dnspython==2.6.1
--e git+git@github.com:DriveTech-Intelligence/DriveTech-DatPros.git@5b16d391491c62e99949a031a737b530a7fbea8d#egg=drivetech_library&subdirectory=drivetech_library
 duplicity==0.8.12.0
 entrypoints==0.3
 excel-base==1.0.4
