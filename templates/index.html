@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+<marquee class="fixed-marquee" onmouseover="stop()" onmouseout="start()">
+{% for news in newsData%} &nbsp; &nbsp;
+  <a href="newsDetails/{{news.news_slug}}">{{news.news_title}}</a>
+{% endfor %}
+</marquee>
+
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" style="text-align:center; padding:40px 0;">
+      <h2>Welcome to My Project</h2>
+      <p>This is a simple starter layout using HTML, CSS, and JavaScript.</p>
+      <button id="clickBtn">Click Me</button>
+    </section>
+    <div class="row">
+      <div class="col-12">
+        <form method="get">
+          <input type="text" name="servicename" value="">
+          <input type="submit" value="Search">
+        </form>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" style="padding:40px 20px; background-color:#f8f8f8;">
+      <h2 style="text-align:center;">Our Services</h2>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:20px;">
+         {% for i in serviceData%}
+        <!-- Service 1 -->
+        <div style="border:1px solid #ccc; border-radius:10px; width:250px; padding:25px; text-align:center; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+          <i class="{{i.service_icon}}" style="font-size:50px; color:#007BFF; margin-bottom:15px;"></i>
+          <h3>{{i.service_title}}</h3>
+          <p>{{i.service_des | safe }}</p>
+        </div>
+        {% empty %}
+           <h2>No Data Found</h2>
+         {% endfor %}
+
+      </div>
+    </section>
+
+    <nav aria-label="...">
+      <ul class="pagination">
+        <ul class="pagination justify-content-center">
+          {% if serviceData.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="/?page=1" tabindex="-1">First</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/?page={{serviceData.previous_page_number}}" tabindex="-1">Previous</a>
+          </li>
+          {% endif %}
+          {% for n in total_pages %}
+          <li class="page-item"><a class="page-link" href="/?page={{n}}">{{n}}</a></li>
+          {% endfor %}
+          {% if serviceData.has_next%}
+          <li class="page-item">
+            <a class="page-link" href="/?page={{serviceData.next_page_number}}">Next</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/?page={{lastpage}}">Last</a>
+          </li>
+          {% endif %}
+          
+        </ul>  
+      </ul>
+    </nav>
+  </main>
+{% endblock %}

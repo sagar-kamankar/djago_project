@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+  <div style="border: 1px solid #ccc; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center;">Simple Form</h2>
+    <form method="POST"  action="{% url 'submitform' %}">
+        {% csrf_token %}
+        {{forms}}
+      <!-- <label>Num1:</label><br>
+      <input type="text" name="num1",value="{{n1}}"><br><br>
+
+      <label>Num2:</label><br>
+      <input type="text" name="num2",value="{{n2}}"><br><br> -->
+      <label>Result:</label>
+      <input type="text" value="{{output}}"><br>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

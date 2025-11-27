@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div  class="row" style="display: flex; justify-content: center; align-items: center; height: 1000vh;">
+  <div class="col-12" style="border: 1px solid #ccc; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center;">Simple Form</h2>
+    <form method="POST">
+        {% csrf_token %}
+      <label>Subject1:</label><br>
+      <input type="text" name="Subject1" value="{{Subject1}}" class="form-control"><br><br>
+      <label>Subject2:</label><br>
+      <input type="text" name="Subject2" value="{{Subject2}}" class="form-control"><br><br>
+      <label>Subject3:</label><br>
+      <input type="text" name="Subject3" value="{{Subject3}}" class="form-control"><br><br>
+      <label>Subject4:</label><br>
+      <input type="text" name="Subject4" value="{{Subject4}}" class="form-control"><br><br>
+      <label>Subject5:</label><br>
+      <input type="text" name="Subject5" value="{{Subject5}}" class="form-control"><br><br>
+      <button type="submit" style="width: 100%; padding: 8px; background-color: #007bff; color: white; border: none; border-radius: 5px;">
+        Calculate Marksheet
+      </button>
+      <label>Total:</label><br>
+      <input type="text" name="Total" value="{{total}}" readonly><br><br>
+      <label>Percentage:</label><br>
+      <input type="text" name="Percentage" value="{{percentage}}" readonly><br><br>
+      <label>Division:</label><br>
+      <input type="text",name="Division" value="{{div}}" readonly><br><br>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

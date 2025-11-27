@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+{% block content %}
+  <!-- Hero Section -->
+  <section>
+    <div class="title text-center">
+        <h2 class="mb-10">{{newsDetail.news_title}}</h2>
+        <p>{{newsDetail.news_desc | safe }}</p>
+    </div>  
+    <div class="col-12">
+      <img src="{{newsDetail.news_img.url}}" alt=""/>
+    </div>  
+  </section>
+{% endblock %}
