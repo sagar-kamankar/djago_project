@@ -12,7 +12,7 @@ pipeline {
 
         stage('Deploy to PythonAnywhere') {
             steps {
-                withCredentials([string(credentialsId: 'PA_API_TOKEN_', variable: 'PA_TOKEN')]) {
+                withCredentials([string(credentialsId: 'PA_API_TOKEN', variable: 'PA_TOKEN')]) {
                     sh '''
                     echo "Zipping project..."
                     zip -r project.zip .
