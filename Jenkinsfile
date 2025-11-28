@@ -2,27 +2,39 @@ pipeline {
     agent any
 
     environment {
-        PA_USERNAME = "hackersaggyhacker"
-        PA_TOKEN = credentials('16c8c2ed749969371535bf125ea357ed798f0b7c')
-        APP_NAME = "hackersaggyhacker.pythonanywhere.com"
+        PA_TOKEN = credentials('PA_API_TOKEN') // use the ID from above
     }
 
     stages {
-        stage('Pull Code') {
+        stage('Checkout') {
             steps {
-                echo "Pulling latest code from GitHub..."
+                git branch: 'master', url: 'https://github.com/sagar-kamankar/djago_project.git'
+            }
+        }
+
+        stage('Setup Python') {
+            steps {
+                sh 'python3 -m venv venv'
+                sh '. venv/bin/activate && pip install --upgrade pip'
+                sh '. venv/bin/activate && pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh '. venv/bin/activate && python manage.py test'
             }
         }
 
         stage('Deploy to PythonAnywhere') {
             steps {
-                echo "Uploading project to PythonAnywhere..."
-
-                sh '''
-                    curl -X POST \
-                    -H "Authorization: Token ${PA_TOKEN}" \
-                    https://www.pythonanywhere.com/api/v0/user/${PA_USERNAME}/webapps/${PA_USERNAME}.pythonanywhere.com/reload/
-                '''
+                sh """
+                . venv/bin/activate
+                pa_autoconfigure_django.py \\
+                --api-token=$PA_TOKEN \\
+                --domain=yourusername.pythonanywhere.com \\
+                --project-root=/home/yourusername/djago_project
+                """
             }
         }
     }
