@@ -14,7 +14,7 @@
       <nav>
         <ul class="nav-links">
           <!-- {{request.path}} -->
-          <li class="{% if request.path == '/'%}active{% endif %}"><a href="{% url 'home' %}">Homess</a></li>
+          <li class="{% if request.path == '/'%}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
           <li class="{% if request.path == '/about-us/'%}active{% endif %}"><a href="{% url 'about' %}">About</a></li>
           {% url 'services' as sc %}
           <li class="{% if request.path == sc%}active{% endif %}"><a href="{{sc}}">Services</a></li>
